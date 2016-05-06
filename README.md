@@ -1,4 +1,4 @@
-# SuperKamp 
+# SuperKamp
 README SHOULD BE READ BEFORE EVERY CHECKOUT, UPDATE OR COMMIT AS IT IS PRONE TO CHANGES AS WE COME TO NEW RULES AND PRACTICES.
 
 
@@ -62,16 +62,23 @@ After installation:
 	3. Installing already defined requirements in new virtual environment:
 	
 		pip install -r requirements.txt
+		
+	4. Installing new libraries(Make sure superkame virtual environment is activated!):
 	
-	4. Saving requirements in requirements.txt(If new libraries have been installed):
+	   pip install json
+	
+	5. Saving requirements in requirements.txt(If new libraries have been installed):
 	
 		pip freeze > requirements.txt
+		
 
 When virtualenvironment is activated terminal looks like:
 ```bash
 (superkamp)shomy4@shomy4-Compaq-CQ58-Notebook-PC:~/workspace/SuperKamp$
 ```
 Whenever requirements.txt is changed it must be commited to the repository. 
+
+**Make sure you are using correct interpreter inside eclipse for this project and that appropriate lib folder is included!** 
 
 
 ###Print statements
@@ -82,6 +89,27 @@ Instead of print statements use logging module.
 *May be used only for debugging purposes, but must be deleted before commiting the code.*
 
 //TBD
+
+###CODE STYLE
+
+*All code must be written in english!
+All variables must be at least 3 characters long, and bear meaningfull name.This rule applies for **for statements** also.
+Function naming is based on snake case as suggested in PEP8.
+Argument naming is based on AREAS project such as in_studentList.*
+
+####Example:
+
+```python
+
+def get_tallest_student_from_class(in_studentList):
+	highest_student = in_studentList[0]
+    for student in in_studentList:
+        if student.height > highest_student.height
+            highest_student = student
+    return highest_student
+    
+
+```
 
 
 
