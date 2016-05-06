@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from home import views as home_views
+from . import settings
 urlpatterns = [
+    url(r'^&',home_views.home_page, name='home'),
     url(r'^admin/', admin.site.urls),
 ]
