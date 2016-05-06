@@ -63,10 +63,14 @@ After installation:
 	
 		pip install -r requirements.txt
 	
-	4 .Saving requirements in requirements.txt:
+	4. Saving requirements in requirements.txt(If new libraries have been installed):
 	
 		pip freeze > requirements.txt
-	
+
+When virtualenvironment is activated terminal looks like:
+```bash
+(superkamp)shomy4@shomy4-Compaq-CQ58-Notebook-PC:~/workspace/SuperKamp$
+```
 Whenever requirements.txt is changed it must be commited to the repository. 
 
 
