@@ -7,12 +7,18 @@ README SHOULD BE READ BEFORE EVERY CHECKOUT, UPDATE OR COMMIT AS IT IS PRONE TO 
 
 ###Imports
 
-** Rules regarding imports **
+**Rules regarding imports**
+
 When defining imports order of imports should be:
-1. Python core libraries
-2. Django libraries
-3. Third party libraries
-4. Imports from project
+
+	1. Python core libraries
+
+	2. Django libraries
+
+	3. Third party libraries
+
+	4. Imports from project
+
 
 Leave one blank row between these categories of imports.
 For user defined imports always use **as** directive which can describe the import and remove any ambiguousity.
@@ -44,16 +50,24 @@ Install virtual environment(and virtualenvwrapper)
 Read: http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
 After installation:
-	Creating virtual environment:
-	virtualenv superkamp
-	Starting virtual env:
-	source superkamp/bin/activate
-	Installing already defined requirements in new virtual environment:
-	pip install -r requirements.txt
-	Saving requirements in requirements.txt:
-	pip freeze > requirements.txt
+
+	1. Creating virtual environment:
 	
-Whenever requirements.txt is changed it must be commited on the repository. 
+		virtualenv superkamp
+	
+	2. Starting virtual env:
+	
+		source superkamp/bin/activate
+	
+	3. Installing already defined requirements in new virtual environment:
+	
+		pip install -r requirements.txt
+	
+	4 .Saving requirements in requirements.txt:
+	
+		pip freeze > requirements.txt
+	
+Whenever requirements.txt is changed it must be commited to the repository. 
 
 
 ###Print statements
