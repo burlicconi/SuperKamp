@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -52,10 +53,12 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'SuperKamp.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,8 +120,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-STATIC_FILES_DIRS = (
+STATIC_ROOT = ''
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')

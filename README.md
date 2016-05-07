@@ -92,10 +92,14 @@ Instead of print statements use logging module.
 
 ###CODE STYLE
 
-*All code must be written in english!
-All variables must be at least 3 characters long, and bear meaningfull name.This rule applies for **for statements** also.
+All code must be written in english!
+
+All variables must be at least 3 characters long, and bear meaningfull name.
+This rule applies for **for statements** also.
+
 Function naming is based on snake case as suggested in PEP8.
-Argument naming is based on AREAS project such as in_studentList.*
+
+Argument naming is based on AREAS project such as in_studentList.
 
 ####Example:
 
