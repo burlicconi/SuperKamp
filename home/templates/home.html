@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<div id="main_container" class="container">
+	<div class="row text">
+		<center><div class="welcome_text">Dobro došli u Super kamp</div></center>
+		<center><div id="start_here_text">Počnite ovde</div></center>
+		<center><img id="arrow" src="{% static "images/home/arrow.png" %}"></center>
+	</div>
+	<div class="row">
+		<div class="col-sm-3 ">
+				<div class="home_button" id="contract_creation" >Novi ugovor
+					<a href=""></a>
+				</div>
+		</div>
+		<div class="col-sm-3 ">
+			<div class="home_button" id="contracts_overview">Ugovori
+					<a href=""></a>
+			</div>
+		</div>
+		<div class="col-sm-3 ">
+			<div class="home_button" id="reports">Izveštaji
+					<a href="#"></a>
+			</div>
+		</div>
+		<div class="col-sm-3 ">
+			<div class="home_button" id="user_preferences">
+					<a href=""></a>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 100px">
+		<div class="col-sm-4 col-sm-offset-4">
+			<center>
+				<div id="help">Klikni ovde za pomoć
+					<a href=""></a>
+					<img id="help_arrow" src="{% static "images/home/help-arrow-icon.png" %}">
+				</div>
+			</center>
+		</div>
+
+
+        <script src="{% static "home/js/home.js" %}"></script>
+        <link rel="stylesheet" href="{% static "css/home.css" %}">
+</div>
+</div>
+{% endblock %}

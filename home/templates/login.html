@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="row">
+	<div id="top_space" ></div>
+</div>
+<div class="row">
+	<div id="log_form">
+		<img id="top_triangle"src="{% static "images/home/login-form-arrow.png" %}">
+		<div id="welcome_text">Dobrodošli u SuperKamp</div>
+		<form id="login-form" method="POST" action="{% url 'home:login' %}">
+            {% csrf_token %}
+			<div class="log_form_row">
+				<div id="wrong_password">{{ login_error }}</div>
+			</div>
+			<div class="log_form_row">
+				<div id="username">
+					<div id="username_icon" class="icon">
+						<div id="trougao"></div>
+					</div>
+					{{ login_form.username }}
+				</div>
+			</div>
+			<div class="log_form_row">
+				<div id="username">
+					<div id="password_icon" class="icon">
+						<div id="trougao"></div>
+					</div>
+					{{ login_form.password }}
+				</div>
+			</div>
+			<div class="log_form_row_login">
+				 <input type="submit" id="sign-in-button"  value="Uloguj se" />
+			</div>
+			<img id="bottom_triangle" src="{% static "images/login/login-form-arrow-down.png" %}">
+			</form>
+			</div>
+	</div>
+	<div class="row">
+		<div id="bottom_space"></div>
+	</div>
+<script src="{% static "home/js/login.js" %} "></script>
+{% endblock %}
