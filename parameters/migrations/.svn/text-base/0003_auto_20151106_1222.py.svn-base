@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('parameters', '0002_auto_20151105_1508'),
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name='parline',
+            name='line_no',
+            field=models.PositiveIntegerField(),
+        ),
+    ]

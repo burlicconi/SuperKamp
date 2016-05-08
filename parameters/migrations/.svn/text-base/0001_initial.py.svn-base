@@ -1,0 +1,57 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='ParLine',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('line_no', models.IntegerField()),
+                ('line_desc', models.CharField(max_length=100)),
+                ('line_comment', models.CharField(max_length=1000)),
+                ('line_num1', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('line_num2', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('line_num3', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('line_num4', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('line_alpha1', models.CharField(max_length=30)),
+                ('line_alpha2', models.CharField(max_length=60)),
+                ('line_date1', models.DateField()),
+                ('line_date2', models.DateField()),
+                ('creation_date', models.DateTimeField(auto_now_add=True)),
+                ('modification_date', models.DateTimeField(auto_now_add=True)),
+                ('last_user', models.CharField(max_length=20)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='ParTable',
+            fields=[
+                ('table_no', models.IntegerField(serialize=False, primary_key=True)),
+                ('table_desc', models.CharField(max_length=100)),
+                ('table_comment', models.CharField(max_length=1000)),
+                ('table_num1', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('table_num2', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('table_num3', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('table_num4', models.DecimalField(max_digits=20, decimal_places=7)),
+                ('creation_date', models.DateTimeField(auto_now_add=True)),
+                ('modification_date', models.DateTimeField(auto_now_add=True)),
+                ('last_user', models.CharField(max_length=20)),
+            ],
+        ),
+        migrations.AddField(
+            model_name='parline',
+            name='table_no',
+            field=models.ForeignKey(to='parameters.ParTable'),
+        ),
+        migrations.AlterUniqueTogether(
+            name='parline',
+            unique_together=set([('table_no', 'line_no')]),
+        ),
+    ]

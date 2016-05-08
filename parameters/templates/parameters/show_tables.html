@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<div class="fieldoverviewheader">
+	<div class="container">
+		<div class="row inline">	
+			<div class="surveys col-sm-4">
+			Šifarnik
+			
+			</div>
+			
+			<div class="col-sm-4 width_search">
+			<div class="search"> 
+				<form id="search_form2" method="POST" action="{% url 'parameters:show_tables' %}" role="form" >
+				{% csrf_token %}
+				<div><input type="txt" class="txtInput" name="table_desc" id="table_desc1" placeholder="PRETRAGA..."></div>
+				</form>
+				<div  class="searchicon" href="javascript:{}" onclick="document.getElementById('search_form2').submit(); return false;"></div>
+			
+			</div>
+			
+
+			<div class="advancesearch" id="advance_button">
+				
+					Napredni filter
+			
+			</div>
+			</div>
+			
+			<div class="float_right">
+			<div class="createnewfiled">Kreiraj tabelu
+					<a href="{% url 'parameters:create_table' %}"></a>
+			</div>
+		</div>
+
+	</div>
+
+			<img src="{% static "images/home/header-item.png" %}" class="header-item">
+			
+	</div>
+</div>
+<div class="advance_search_content" id="advance_search">
+	<div class="container">
+		<div class="row row-centered">
+			<form id="search_form" method="POST" action="{% url 'parameters:show_tables' %}" role="form" >
+			{% csrf_token %}
+				<div>
+					<div class="col-sm-6"> Broj tabele
+						{{form.table_no}}
+					</div>
+					<div class="col-sm-6"> Opis tabele
+						{{form.table_desc}}
+					</div>
+				</div>
+			</form>
+			<div class="advance_choice col-sm-12 col-centered">
+  				<div class="advance_close col-sm-4" id="close_advance">ZATVORI</div>
+  				<div class="advance_reset col-sm-4" id="clear_advance_table">RESETUJ</div>
+  				<div class="advance_result col-sm-4" href="javascript:{}" onclick="document.getElementById('search_form').submit(); return false;">REZULTAT
+				 </div>
+  			</div>
+
+		</div>
+	</div>
+</div>
+
+	<div class="container">
+	<div class="row">
+		<div class="analyze_header">
+              <div class="header_green" id="field_overview">Šifarnik tabele</div>
+              <div class="header_angle"></div>
+              <div class="header_navy">
+              	<div class="table_pagination">
+              	<div class="pagination_right"></div>
+              	<div class="pagination_left"></div>
+              	</div>
+              </div>
+
+            </div>
+
+	<table id="table" border="1" width="100%" class="tablefieldoverview table table-striped table-bordered table-condensed table-hover tablesorter">
+		<thead>
+		<tr>
+			<th width="10%"><strong>Broj tabele</strong></th>
+			<th width="60%"><strong>Opis tabele</strong></th>
+			<th width="16%"><strong>Detalji tabele</strong></th>
+			<th width="7%"><strong>Izmeni</strong></th>
+			<th width="7%"><strong>Obriši</strong></th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for record in result_tables %}
+		<tr>
+			<td><center>{{record.table_no}}</center></td>
+			<td>{{record.table_desc}}</td>
+			<td><div onclick="location.href='{% url 'parameters:show_lines' record.table_no %}';"class="preview"><b>Pregled</b></div></td>
+			<td><div class="edit" onclick="location.href='{% url 'parameters:edit_table' record.table_no %}';"></div></td>
+			<td><div class="xbutton"><a class='delete_table_link' href="{% url 'parameters:delete_table' record.table_no %}"></a></div></td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+</div>
+
+
+<script src="{% static "parameters/js/show_tables.js" %}"> </script>
+<!-- Table sorter--> 
+<script src="{% static "parameters/js/table_sorter.js" %}"></script>
+<script src="{% static "parameters/js/advance_search.js" %}"></script>
+
+{% endblock %}

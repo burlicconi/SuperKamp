@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<br />
+<div class="col-md-6">
+<h1>{% trans "Parameter tables management" %}</h1>
+<p>
+<br />
+<br />
+[ <a href="{% url 'parameters:create_table' %}">{% trans "Create table" %}</a> ] | 
+[ <a href="javascript:{}" onclick="document.getElementById('search_form').submit(); return false;">{% trans "Find table" %}</a> ]
+<br />
+<br />
+<table class="table">
+<thead>
+<tr>
+<h4>{% trans "Parameter tables search:" %}</h4>
+</tr>
+</thead>
+<br />
+<form id="search_form" method="POST" action="{% url 'parameters:show_tables' %}" role="form" >
+{% csrf_token %}
+    
+        <tr>
+            <td>{% trans "Table no.:" %} </td>
+			<td>
+			{{ search_tables_form.table_no }}
+			</td>
+		</tr>
+		<tr>
+			<td>{% trans "Table description:" %} </td>
+			<td>
+			{{ search_tables_form.table_desc }}
+			</td>
+		</tr>
+	
+</form>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" href="/static/libs/jquery/jquery-ui/1.11.4/jquery-ui.css">
+<script src="/static/libs/jquery/jquery-ui/1.11.4/external/jquery/jquery.js"></script>
+<script src="/static/libs/jquery/jquery-ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#id_line_date1').datepicker();
+	    $('#id_line_date2').datepicker();
+	});
+	
+	function goBack() {
+	    window.history.back();
+	}
+</script>
+<div style="padding-top: 50px">
+	<div class="form" id="popup_form">
+		<div class="form_header">
+			{% if pline %}
+			<div id="form_label"><b>Izmeni atribut {{ptable}}/{{pline}}</b></div>
+			{% else %}
+			<div id="form_label"><b>Šifarnik tabela {{ptable}} definisanje atributa</b></div>
+			{% endif %}
+			<div id="triangle-left"></div>
+			<div onClick="goBack()" id="form_actions">
+				<div id="cancel"><b>Odustani</b></div>
+				<img id="close_button"src="{% static "images/form/form-cancel.png" %}"/>
+			</div>
+		</div>
+		{% if pline %}
+		  <form id="update_form" method="POST" action="{% url 'parameters:save_line' ptable pline %}">
+		{% else %}
+		  <form id="update_form" method="POST" action="{% url 'parameters:save_line' ptable %}">
+		{% endif %}
+			{% csrf_token %}
+			<div class="form_row">
+				<p class="input_label">Broj atributa</p>
+				{{line_details.line_no }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Opis atributa</p>
+				{{ line_details.line_desc }}
+			</div>
+			<div class="form_row_textarea">
+				<p class="input_label">Komentar atributa</p>
+				{{ line_details.line_comment }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 1</p>
+				{{ line_details.line_num1 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 2</p>
+				{{ line_details.line_num2 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 3</p>
+				{{ line_details.line_num3 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 4</p>
+				{{ line_details.line_num4 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Alfanum. vrednost 1</p>
+				{{ line_details.line_alpha1 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Alfanum. vrednost 2</p>
+				{{ line_details.line_alpha2 }}
+			</div>
+			<div class="form_row">
+					<p class="input_label">Datum 1</p>
+					{{ line_details.line_date1 }}
+			</div>
+			<div class="form_row">
+					<p class="input_label">Datum 2</p>
+					{{ line_details.line_date2 }}
+			</div>
+			<div id="form_footer">
+				<input id="create_param_btn"  type="submit" class="form_button_input" value="Sačuvaj" />
+			</div>	
+		  </form>
+	</div>
+</div>
+
+<script src="{% static "parameters/js/show_lines.js" %}"> </script>
+{% endblock %}
+

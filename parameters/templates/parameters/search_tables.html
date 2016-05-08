@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<br />
+<div class="col-md-6">
+<h1>Upravljanje šifarnikom</h1>
+<p>
+<br />
+<br />
+[ <a href="{% url 'parameters:create_table' %}">Kreiraj tabelu</a> ] | 
+[ <a href="javascript:{}" onclick="document.getElementById('search_form').submit(); return false;">Pronađi tabelu</a> ]
+<br />
+<br />
+<table class="table">
+<thead>
+<tr>
+<h4>Pretraga šifarnik tabela</h4>
+</tr>
+</thead>
+<br />
+<form id="search_form" method="POST" action="{% url 'parameters:show_tables' %}" role="form" >
+{% csrf_token %}
+    
+        <tr>
+            <td>Broj tabele: </td>
+			<td>
+			{{ search_tables_form.table_no }}
+			</td>
+		</tr>
+		<tr>
+			<td>Opis tabele: </td>
+			<td>
+			{{ search_tables_form.table_desc }}
+			</td>
+		</tr>
+	
+</form>
+</table>
+</div>
+{% endblock %}
