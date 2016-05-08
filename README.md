@@ -58,10 +58,12 @@ After installation:
 	2. Starting virtual env:
 	
 		source superkamp/bin/activate
+		#for Windows only activate.bat file, without source command
 	
 	3. Installing already defined requirements in new virtual environment:
 	
 		pip install -r requirements.txt
+		#requirements.txt is under directory you created in step 1 
 		
 	4. Installing new libraries(Make sure superkame virtual environment is activated!):
 	
@@ -114,6 +116,22 @@ def get_tallest_student_from_class(in_studentList):
     
 
 ```
+
+###Comments
+Use comments wherever you can. Use python common style:
+def some_func(in_param1,in_param2):
+    """Comment .....
+    :param1 desc_param1
+    :param2 desc_param2
+     :return desc_return
+     """
+     
+Also, every if-else which is not obvious should have at least "one-word" comment
+
+if frequency > 55: # very often
+...
+else: #not so often
+
 
 
 

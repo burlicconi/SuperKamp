@@ -17,10 +17,8 @@
         
         <script src="{% static "libs/jquery/jquery-2.2.3.js" %} "></script>
         <script src="{% static "libs/bootstrap/js/bootstrap.js"%}"></script>
-        <script src="{% static "libs/modernizr/2.6.2/modernizr-2.6.2.min.js" %}"></script>
         
-        <link rel="stylesheet" href="{% static "libs/font-awesome/4.2.0/css/font-awesome.min.css" %}">
-        
+        <link rel="stylesheet" href="{% static "libs/font-awesome/css/font-awesome.min.css" %}">
 		<link rel="stylesheet" href="{% static "libs/bootstrap/css/bootstrap.css" %}">
         <link rel="stylesheet" href="{% static "css/main.css" %}">
         <link rel="stylesheet" href="{% static "css/base.css" %}">
@@ -32,8 +30,11 @@
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">SuperKamp</a>
+		    <a class="navbar-brand" href="{% url 'home' %}"> 
+            <img class="imagestyle1" src="{% static "images/home/logo.png" %}" alt="SuperKamp" height="33" width="153" align="top"/></a>
+
 		    </div>
+		     {% if user.is_authenticated %}
 		    <ul class="nav navbar-nav">
 		      <li class="active"><a href="#">Početna</a></li>
 		      <li class="dropdown">
@@ -53,24 +54,42 @@
 		      </li>
 		      <li><a href="#">Ugovori</a></li>
 		      <li class="dropdown">
-		        <a class="dropdown-toggle" href="#">Parametri</a>
+		        <a class="dropdown-toggle" href="#">Šifarnik</a>
 		        
 		      </li>
 		    </ul>
+		           <ul class="nav navbar-nav navbar-right">
+         
+            <li class="dropdown" id="surveysdropuser">
+            <a href="#" class="dropdown-toggle"  data-toggle="dropdown">Korisnik: {{ request.session.username }} <img src="{% static "images/home/user.png" %}"></a>
+              <ul class="dropdown-menu usermenu">
+                <div class="user-item" >
+                  <img src="{% static "images/home/drop-down-item.png" %}"> </div>
+                  <li class="dropdown-header hz" ><div class="user-image-preferences"></div><div class="center"><a href="{% url 'admin:index' %}">Korisnička podešavanja</a></div></li>
+                  <li class="dropdown-header hz margintop"><div class="user-image-help" ></div><div class="center"><a href="">Pomoć</a></div> </li>
+                  <li class="dropdown-header hz lastone margintop"><div class="user-image-logout"></div><div class="center"><a href="{% url 'home:logout' %}">Izloguj se</a></div></li>
+                  
+                 
+              </ul>
+            </li>
+            
+          
+        </ul>
+		    {% endif %}
 		  </div>
 		</nav>
 
-        
+  
         
        
-	 <div id="content">
-	  {% block content %}
-      
-      {% endblock %}
-	</div>
+		<div id="content">
+		  {% block content %}
+	      
+	      {% endblock %}
+		</div>
     
-    <footer class="col-md-12">
-        <p>&copy; </p>
-    </footer>
-    </body>
+	    <footer class="col-md-12">
+	        <p>&copy; </p>
+	    </footer>
+  	</body>
 </html>

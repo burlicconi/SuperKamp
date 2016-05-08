@@ -80,14 +80,13 @@ WSGI_APPLICATION = 'SuperKamp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'superkamp',
+        'NAME': 'superkamp',                      
         'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -107,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGIN_URL = "/home/login"
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -120,12 +119,16 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 STATIC_ROOT = ''
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 MEDIA_URL = '/media/'
+
 STATIC_URL = '/static/'

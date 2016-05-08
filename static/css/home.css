@@ -1,0 +1,163 @@
+#content {
+	min-height: 100%;
+	background-image: url('../images/home/kamp.png');
+	background-repeat: no-repeat;
+	background-position: center 70px;
+	background-size: contain;
+	background-color: #f5f5f5;
+	padding-bottom:100px;
+}
+
+.action_buttons {
+	margin-top: 100px;
+	text-align: center;
+}
+.right {
+	margin-right: 0px;
+}
+
+#content {
+	margin-top: 20px;
+}
+
+#help {
+	margin-top: 70px;
+	width: 170px;
+	height: 40px;
+	text-align: center;
+	color: #ffffff;
+	background-color: #75829f;
+	line-height: 40px;
+	border-radius: 3px;
+	position: relative;
+}
+
+#help a {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none; /* No underlines on the link */
+    z-index: 10; /* Places the link above everything else in the div */
+    background-color: #FFF; /* Fix to make div clickable in IE */
+    opacity: 0; /* Fix to make div clickable in IE */
+    filter: alpha(opacity=1); /* Fix to make div clickable in IE */
+}
+
+#help_arrow {
+	z-index: 10;
+	position: absolute;
+	left: 10px;
+	top: 30px;
+}
+
+.home_button {
+	font-family: "OpenSans";
+	font-weight: bold;
+	display: inline-block;
+	width: 100%;
+	height: 65px;
+	background-color: #ffffff;
+	float: left;
+	box-shadow: 0px 9px 13px -8px #75829f;	
+	color: #75829f;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 65px;
+	text-indent: 10px;
+	border-radius: 3px;
+	background-repeat: no-repeat;
+	background-position: 10% center;
+	border:	1px solid #b2bac3;
+	font-size: 15px;
+	position: relative;
+}	
+
+.home_button a {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none; /* No underlines on the link */
+    z-index: 10; /* Places the link above everything else in the div */
+    background-color: #FFF; /* Fix to make div clickable in IE */
+    opacity: 0; /* Fix to make div clickable in IE */
+    filter: alpha(opacity=1); /* Fix to make div clickable in IE */
+}
+
+.home_button:hover {
+	background-color: #8cc63f;
+	color: #ffffff;
+	border-color: #73a431;
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .home_button {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px){
+    .home_button {
+        margin-bottom: 10px;
+    }
+}
+
+#field_creation {
+	background-image: url('../images/home/field-creation.png');
+}
+
+#field_overview {
+	background-image: url('../images/home/field-overview.png');
+}
+
+#reports {
+	background-image: url('../images/home/reports.png');
+}
+
+#user_preferences {
+	background-image: url('../images/home/user-preferences.png');
+}
+
+#field_creation:hover {
+	background-image: url('../images/home/field-creation-hover.png');
+}
+
+#field_overview:hover {
+	background-image: url('../images/home/field-overview-hover.png');
+}
+
+#reports:hover {
+	background-image: url('../images/home/reports-hover.png');
+}
+
+#user_preferences:hover {
+	background-image: url('../images/home/user-preferences-hover.png');
+}
+
+.col-sm-3.proba {
+	padding-right: 0px;
+}
+
+.welcome_text {
+	font-size: 32px; 
+	font-family: 'OpenSans';
+	color: #9D9D9D;
+	margin-top: 20px;
+}
+
+#start_here_text {
+	font-size: 29px; 
+	margin-bottom: 0;
+	color: #9D9D9D;
+	font-family: "OpenSans";
+}
+
+.row.text {
+	margin-bottom: 80px;
+}
+#main_container{
+	margin-bottom: 100px;
+}

@@ -847,7 +847,7 @@ input[type=number] {
 	display: block;
 	width: 320px;
 	height: 60px;
-	background-color: #8cc63f;
+	background-color: #36495c;
 	color: #ffffff;
 	border: none;
 	border-radius: 2px;
@@ -857,11 +857,11 @@ input[type=number] {
 }
 
 #username_icon {
-	background-image: url('../images/login/login-user-icon.png'); 
+	background-image: url('../images/home/login-user-icon.png'); 
 }
 
 #password_icon {
-	background-image: url('../images/login/login-password-icon.png'); 
+	background-image: url('../images/home/login-password-icon.png'); 
 }
 
 #trougao {
