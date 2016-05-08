@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<script type="text/javascript">
+function goBack() {
+    window.history.back();
+}
+</script>
+<div style="padding-top: 50px">
+	<div class="form" id="popup_form">
+		<div class="form_header">
+			{% if ptable %}
+			<div id="form_label"><b>Izmeni tabelu</b></div>
+			{% else %}
+			<div id="form_label"><b>Kreiraj tabelu</b></div>
+			{% endif %}
+			<div id="triangle-left"></div>
+			<div onClick="goBack()" id="form_actions">
+				<div id="cancel"><b>Odustani</b></div>
+			</div>
+		</div>
+		{% if ptable %}
+		<form id="update_form" method="POST" action="{% url 'parameters:save_table' ptable %}">
+		{% else %}
+		<form id="update_form" method="POST" action="{% url 'parameters:save_table'%}">
+		{% endif %}
+			{% csrf_token %}
+			<div class="form_row">
+				<p class="input_label">Broj tabele</p>
+				{{ table_details.table_no }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Opis tabele</p>
+				{{ table_details.table_desc }}
+			</div>
+			<div class="form_row_textarea">
+				<p class="input_label">Komentar tabele</p>
+				{{ table_details.table_comment }}
+			</div>		
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 1</p>
+				{{ table_details.table_num1 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 2</p>
+				{{ table_details.table_num2 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 3</p>
+				{{ table_details.table_num3 }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Numerička vrednost 4</p>
+				{{ table_details.table_num4 }}
+			</div>
+			<div id="form_footer">
+				<input id="create_param_table_btn" type="submit" class="form_button_input" value="Sačuvaj" />
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

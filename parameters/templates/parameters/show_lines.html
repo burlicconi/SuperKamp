@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}        
+
+<div class="fieldoverviewheader">
+	<div class="container">
+		<div class="row">	
+			<div class="surveys col-sm-4">
+				{{ header_title }}
+			</div>
+			<div class="col-sm-4 width_search">
+				<div class="search"> 
+					<form id="search_form2" method="POST" action="{% url 'parameters:show_lines' ptable%}" role="form" >
+					{% csrf_token %}
+					<div><input type="txt" class="txtInput" name="line_desc" id="line_desc1" placeholder="PRETRAGA..."></div>
+					</form>
+					<div  class="searchicon" href="javascript:{}" onclick="document.getElementById('search_form2').submit(); return false;"></div>
+				
+				</div>
+			
+
+				<div class="advancesearch" id="advance_button">	
+						Napredni filter
+				</div>
+			</div>
+			
+			
+			<div class="float_right">
+				<div class="createnewfiled">
+						Dodaj atribut
+						<a href="{% url 'parameters:create_line' ptable %}"></a>
+				</div>
+			</div>
+
+		</div>
+		<img src="{% static "images/home/header-item.png" %}" class="header-item">
+	</div>
+</div>
+<div class="advance_search_content" id="advance_search">
+	<div class="container">
+		<div class="row row-centered">
+			<form id="search_form" method="POST" action="{% url 'parameters:show_lines' ptable%}" role="form" >
+				{% csrf_token %}
+				<div>
+					<div class="col-sm-6">Broj atributa
+						{{form.line_no}}
+					</div>
+					<div class="col-sm-6">Opis atributa
+						{{form.line_desc}}
+					</div>
+				</div>
+				<div class="advance_choice col-sm-12 col-centered">
+	  				<div class="advance_close col-sm-4" id="close_advance">ZATVORI</div>
+	  				<div class="advance_reset col-sm-4" id="clear_advance_line">RESETUJ</div>
+	  				<div class="advance_result col-sm-4" href="javascript:{}" onclick="document.getElementById('search_form').submit(); return false;">REZULTAT</div>
+	  			</div>
+  		</form>
+		</div>
+	</div>
+</div>
+	
+<div class="container">
+	<div class="row">
+		<div class="analyze_header">
+              <div class="header_green" id="field_overview">Atributi šifarnika</div>
+              <div class="header_angle"></div>
+              <div class="header_navy">
+              	<div class="table_pagination">
+              	<div class="pagination_right"></div>
+              	<div class="pagination_left"></div>
+              	</div>
+              </div>
+
+       </div>
+	   <table id="table" border="1" width="100%" class="tablefieldoverview table table-striped table-bordered table-condensed table-hover tablesorter">
+			<thead>
+				<tr>
+					<th width="5%"><strong>Atribut</strong></th>
+					<th width="29%"><strong>Opis atributa</strong></th>
+					<th width="6%"><strong>Broj 1</strong></th>
+					<th width="6%"><strong>Broj 2</strong></th>
+					<th width="6%"><strong>Broj 3</strong></th>
+					<th width="6%"><strong>Broj 4</strong></th>
+					<th width="8%"><strong>Alfa 1</strong></th>
+					<th width="8%"><strong>Alfa 2</strong></th>
+					<th width="8%"><strong>Datum 1</strong></th>
+					<th width="8%"><strong>Datum 2</strong></th>
+					<th width="5%"><strong>Detalji</strong></th>
+					<th width="5%"><strong>Izbriši</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for record in result_lines %}
+				<tr>
+					<td><center>{{record.line_no}}</center></td>
+					<td>{{record.line_desc}}</td>
+					<td>{{record.line_num1|floatformat:"-2"}}</td>
+					<td>{{record.line_num2|floatformat:"-2"}}</td>
+					<td>{{record.line_num3|floatformat:"-2"}}</td>
+					<td>{{record.line_num4|floatformat:"-2"}}</td>
+					<td>{{record.line_alpha1|default_if_none:""}}</td>
+					<td>{{record.line_alpha2|default_if_none:""}}</td>
+					<td>{{record.line_date1|default_if_none:""}}</td>
+					<td>{{record.line_date2|default_if_none:""}}</td>
+					<td><div class="edit" onclick="location.href='{% url 'parameters:edit_line' ptable record.line_no %}';"></div></td>
+					<td><div class="xbutton"><a class='delete_line_link' href="{% url 'parameters:delete_line' ptable record.line_no %}"></a></div></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+	</table>
+</div>
+</div>
+	
+
+
+<!-- Table sorter-->  
+<script src="{% static "parameters/js/show_lines.js" %}"> </script>
+
+<script src="{% static "surveys/js/table_sorter.js" %}"></script>
+
+<script src="{% static "parameters/js/advance_search.js" %}"></script>
+
+
+
+{% endblock %}

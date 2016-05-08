@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """SuperKamp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -23,4 +24,5 @@ urlpatterns = [
     url(r'^$',home_views.home_page, name='home'),
     url(r'^home/',include('home.urls', namespace="home")),
     url(r'^admin/', admin.site.urls),
+    url(r'^parameters/',include('parameters.urls',namespace="parameters"))
 ]
