@@ -5,4 +5,3 @@ urlpatterns = [url(r'^login$',views.login_view, name='login'),
                url(r'^login(?P<next>.+)',views.login_view, name='login'),
                url(r'^logout$', views.logout_view,name='logout'),
                ]
-#test 222222
