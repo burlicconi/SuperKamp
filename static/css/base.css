@@ -1172,6 +1172,14 @@ div.upload input {
 	font-size: 15px;
 }
 
+.asterisk_input:after {
+content:" *"; 
+color: #e32;
+position: absolute; 
+margin: 0px 0px 0px -20px; 
+font-size: xx-large; 
+padding: 0 5px 0 0; }
+
 
 /*PLACEHOLDER COLORS ADJUSTMENT*/
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */

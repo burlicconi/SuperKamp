@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<script type="text/javascript">
+function goBack() {
+    window.history.back();
+}
+</script>
+<div class="form_row">
+{{ parent_details.errors }}
+</div>
+<div style="padding-top: 50px">
+	<div class="form" id="popup_form">
+		<div class="form_header">
+			{% if ptable %}
+			<div id="form_label"><b>Izmeni roditelja</b></div>
+			{% else %}
+			<div id="form_label"><b>Kreiraj roditelja</b></div>
+			{% endif %}
+			<div id="triangle-left"></div>
+			<div onClick="goBack()" id="form_actions">
+				<div id="cancel"><b>Odustani</b></div>
+			</div>
+		</div>
+		{% if parent_id %}
+		<form id="update_form" method="POST" action="{% url 'clients:save_parent' parent_id %}">
+		{% else %}
+		<form id="update_form" method="POST" action="{% url 'clients:save_parent'%}">
+		{% endif %}
+			{% csrf_token %}
+			<div class="form_row">
+
+				<p class="input_label">Ime</p>
+				{{ parent_details.first_name }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Prezime </p>
+				{{ parent_details.last_name }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">JMBG</p>
+				{{ parent_details.jmbg }}
+			</div>		
+			<div class="form_row">
+				<p class="input_label">Broj lične karte</p>
+				{{ parent_details.pid_num }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Adresa</p>
+				{{ parent_details.address }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Mobilni telefon</p>
+				{{ parent_details.mob_num }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Fiksni telefon</p>
+				{{ parent_details.phone_num }}
+			</div>
+			<div class="form_row">
+				<p class="input_label">Grad</p>
+				{{ parent_details.city }}
+			</div>		
+			<div class="form_row">
+				<p class="input_label">E-mail</p>
+				{{ parent_details.email }}
+			</div>
+			<div id="employed_id" class="form_row">
+				<p class="input_label">Zaposlen</p>
+				{{ parent_details.employed }}
+			</div>
+			<div id="company_id" class="form_row">
+				<p class="input_label">Kompanija</p>
+				{{ parent_details.company }}
+			</div>
+			<div id="workplace_id" class="form_row">
+				<p class="input_label">Radno mesto</p>
+				{{ parent_details.workplace }}
+			</div>
+			<div class="form_row_textarea">
+				<p class="input_label">Napomena</p>
+				{{ parent_details.note }}
+			</div>
+			<div id="form_footer">
+				<input id="create_parent_btn" type="submit" class="form_button_input" value="Sačuvaj" {{save_button}}/>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script src="{% static "clients/js/create_parent.js" %}"> </script>
+
+{% endblock %}
